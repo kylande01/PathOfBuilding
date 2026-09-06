@@ -1,0 +1,28 @@
+{
+  "leagueName": "Fixture",
+  "uniques": [
+    {
+      "name": "Abberath's Hooves",
+      "baseType": "Goathide Boots",
+      "vestigialObserved": true,
+      "mods": [
+        {
+          "modGroup": "explicit",
+          "modId": "MovementVelocityUnique__7",
+          "stats": [
+            {
+              "statId": "base_movement_velocity_+%",
+              "min": 15.0,
+              "max": 15.0
+            }
+          ]
+        },
+        {
+          "modGroup": "implicit",
+          "modId": "EmptyStatsFixture",
+          "stats": []
+        }
+      ]
+    }
+  ]
+}
