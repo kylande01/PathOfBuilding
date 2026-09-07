@@ -16,6 +16,16 @@ FIXTURE_PATH = (
 VARIANT_FIXTURE_PATH = (
     Path(__file__).parent / "fixtures" / "unique_blocks_with_variants.lua"
 )
+NO_TRAILING_COMMA_FIXTURE_PATH = (
+    Path(__file__).parent
+    / "fixtures"
+    / "final_block_without_trailing_comma.lua"
+)
+INLINE_TABLE_END_FIXTURE_PATH = (
+    Path(__file__).parent
+    / "fixtures"
+    / "final_block_with_inline_table_end.lua"
+)
 
 
 class UniqueLuaLoaderTests(unittest.TestCase):
@@ -46,6 +56,34 @@ class UniqueLuaLoaderTests(unittest.TestCase):
                 "Second Boots",
                 "Wool Shoes",
                 "SecondMod",
+            ),
+        )
+
+    def test_loads_final_block_without_trailing_comma(self) -> None:
+        blocks = load_unique_blocks(NO_TRAILING_COMMA_FIXTURE_PATH)
+
+        self.assertEqual(len(blocks), 1)
+        self.assertEqual(blocks[0].name, "Final Boots")
+        self.assertEqual(
+            blocks[0].lines,
+            (
+                "Final Boots",
+                "Iron Greaves",
+                "FinalMod",
+            ),
+        )
+
+    def test_loads_final_block_with_inline_table_end(self) -> None:
+        blocks = load_unique_blocks(INLINE_TABLE_END_FIXTURE_PATH)
+
+        self.assertEqual(len(blocks), 1)
+        self.assertEqual(blocks[0].name, "Inline Boots")
+        self.assertEqual(
+            blocks[0].lines,
+            (
+                "Inline Boots",
+                "Wool Shoes",
+                "InlineMod",
             ),
         )
 

@@ -50,7 +50,7 @@ def load_unique_blocks(path: Path) -> tuple[UniqueBlock, ...]:
                 current_start_line = line_number + 1
                 continue
 
-            if marker == "]],[[" or marker == "]],":
+            if marker in {"]],[[", "]],", "]]", "]],}"}:
                 if current_lines is None or current_start_line is None:
                     raise ValueError(
                         f"Unexpected block ending on line {line_number}"
